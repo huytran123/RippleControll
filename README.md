@@ -11,19 +11,7 @@ Base component for TouchableOpacity element with activeOpacity=0.9.
 * Consistent look and feel on iOS and Android
 * Can be used as drop-in replacement for TouchableOpacity
 * Pure javascript implementation.
-* **RippleIcon** control support icon types:
-1. **material-community**
-1. **font-awesome**
-1. **font-awesome-5**
-1. **octicon**
-1. **onicon**
-1. **foundation**
-1. **evilicon**
-1. **simple-line-icon**
-1. **zocial**
-1. **entypo**
-1. **ant-design**
-1. **feather**
+* **RippleIcon** control support icon types: **material-community**, **font-awesome**, **font-awesome-5**,**octicon**, **onicon**, **foundation**, **evilicon**, **simple-line-icon**, **zocial**, **entypo**, **ant-design**, **feather**
 
 **Installation**
 ------------
