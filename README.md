@@ -19,9 +19,9 @@ Base component for TouchableOpacity element with activeOpacity=0.9.
 
 Usage
 ------------
-      import React, { Component } from "react";
-      import {  StyleSheet, View } from "react-native";
-      import {RippleTouchable, RippleButton, RippleIcon} from 'react-native-ripple-controls;
+    import React, { Component } from "react";
+    import {  StyleSheet, View } from "react-native";
+    import {RippleTouchable, RippleButton, RippleIcon} from 'react-native-ripple-controls;
     
     export default class App extends Component {
         render() {
