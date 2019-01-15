@@ -1,17 +1,14 @@
 {
-  "name": "MyControls",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-ripple-controls",
+  "version": "0.0.12",
+  "description": "ripple controls supports androind and ios react native",
+  "main": "index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "react": "16.6.3",
-    "react-native": "0.57.8",
-    "react-native-elements": "^0.19.1",
-    "react-native-vector-icons": "^6.1.0"
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
@@ -21,5 +18,22 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huytran123/RippleControls.git"
+  },
+  "keywords": [
+    "ripple",
+    "controls",
+    "react",
+    "native",
+	"button"
+  ],
+  "author": "HuyTran <huy.hoang2225@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huytran123/RippleControls/issues"
+  },
+  "homepage": "https://github.com/huytran123/RippleControls#readme"
 }

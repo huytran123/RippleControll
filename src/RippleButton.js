@@ -9,7 +9,8 @@ type Props = {
     buttonContainerStyle: StyleProp<ViewStyle>,
     textStyle: StyleProp<TextStyle>,
     rippleColor: String,
-    onPress(event): void
+    onPress(event): void,
+    onLongPress(event): void
 };
 export default class RippleButton extends React.PureComponent<Props> {
     constructor(props) {
@@ -23,7 +24,8 @@ export default class RippleButton extends React.PureComponent<Props> {
         buttonContainerStyle: PropTypes.any,
         textStyle: PropTypes.any,
         rippleColor: PropTypes.string,
-        onPress: PropTypes.func
+        onPress: PropTypes.func,
+        onLongPress: PropTypes.func
     };
 
     static defaultProps = {
@@ -43,6 +45,8 @@ export default class RippleButton extends React.PureComponent<Props> {
                     this.props.buttonContainerStyle
                 ]}
                 rippleColor={this.props.rippleColor}
+                onPress={this.props.onPress}
+                onLongPress={this.props.onLongPress}
             >
                 {this.props.iconLeft}
                 <Text
