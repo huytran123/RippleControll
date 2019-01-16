@@ -24,9 +24,6 @@ Base component for TouchableOpacity element with activeOpacity=0.9.
 * Step 3: Install react-native-vector-icons
 > npm i --save react-native-vector-icons
 
-* Step 3: Install react-native-vector-icons
-> npm i --save react-native-vector-icons
-
 * Step 4: Link react-native-vector-icons
 > react-native link react-native-vector-icons
 
