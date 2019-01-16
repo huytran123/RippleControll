@@ -2,7 +2,7 @@
 ------------
 Base component for TouchableOpacity element with activeOpacity=0.9.
 
-![alt text](https://github.com/huytran123/RippleControls/blob/master/Screen%20Recording%202019-01-15%20at%2010.54.57%20PM.gif)
+![alt text](https://raw.githubusercontent.com/huytran123/RippleControls/master/Screen%20Recording%202019-01-15%20at%2010.54.57%20PM.gif)
 
 **FEATURES**
 ------------

@@ -1,6 +1,6 @@
 {
   "name": "react-native-ripple-controls",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "ripple controls supports androind and ios react native",
   "main": "index.js",
   "scripts": {
