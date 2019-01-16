@@ -15,7 +15,20 @@ Base component for TouchableOpacity element with activeOpacity=0.9.
 
 **Installation**
 ------------
+* Step 1: Install react-native-ripple-controls
 > npm i --save react-native-ripple-controls
+
+* Step 2: Install react-native-elements
+> npm i --save react-native-elements
+
+* Step 3: Install react-native-vector-icons
+> npm i --save react-native-vector-icons
+
+* Step 3: Install react-native-vector-icons
+> npm i --save react-native-vector-icons
+
+* Step 4: Link react-native-vector-icons
+> react-native link react-native-vector-icons
 
 Usage
 ------------
