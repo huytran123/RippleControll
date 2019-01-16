@@ -7,11 +7,11 @@ Base component for TouchableOpacity element with activeOpacity=0.9.
 **FEATURES**
 ------------
 * Easy to use
-* Configurable
-* Consistent look and feel on iOS and Android
-* Can be used as drop-in replacement for TouchableOpacity
+* Easy to configurable
+* Consistent on iOS and Android
+* Can be used as drop-in replacement for TouchableOpacity, TouchableHighlight, TouchableNativeFeedback
 * Pure javascript implementation.
-* **RippleIcon** control support icon types: **material-community**, **font-awesome**, **font-awesome-5**,**octicon**, **onicon**, **foundation**, **evilicon**, **simple-line-icon**, **zocial**, **entypo**, **ant-design**, **feather**
+
 
 **Installation**
 ------------
