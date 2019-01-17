@@ -7,9 +7,26 @@ import IconFontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 import IconFeather from "react-native-vector-icons/Feather";
 type Props = {
+    /**
+     * Name of icon
+     */
     name: String,
-    type: Enumerator,
+    /**
+     * Type: defaults to material-community, options are:
+     * font-awesome-5, feather, ant-design, material-community, zocial, font-awesome, octicon, ionicon, foundation, evilicon, simple-line-icon, or entypo
+     * @default 'material-community'
+     */
+    type: String,
+    /**
+     * Size of icon
+     * @default 26
+     */
     size: Number,
+    /**
+     * Color of icon
+     *
+     * @default 'black'
+     */
     color: String,
     containerStyle: StyleProp<ViewStyle>,
     onPress(event): void,
@@ -44,8 +61,9 @@ export default class RippleIcon extends React.PureComponent<Props> {
         colorRipple: PropTypes.string
     };
     static defaultProps = {
-        size: 20,
-        color: "#000"
+        size: 26,
+        color: "#000",
+        type:"material-community"
     };
     renderIcon() {
         const { type } = this.props;

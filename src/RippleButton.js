@@ -3,11 +3,30 @@ import React from "react";
 import PropTypes from "prop-types";
 import RippleTouchable from "./RippleTouchable";
 type Props = {
+    /**
+     * Icon left of button
+     */
     iconLeft: Element,
+    /**
+     * Icon right of button
+     */
     iconRight: Element,
+    /**
+     * Text of button
+     */
     text: String,
+    /**
+     * button style
+     */
     buttonContainerStyle: StyleProp<ViewStyle>,
+    /**
+     * Text style of button
+     */
     textStyle: StyleProp<TextStyle>,
+     /**
+     * Color of ripple effect
+     * @default '#000'
+     */
     rippleColor: String,
     onPress(event): void,
     onLongPress(event): void

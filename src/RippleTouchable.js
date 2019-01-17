@@ -10,15 +10,43 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 type Props = {
+    /**
+     * Color of ripple effect
+     * @default '#000'
+     */
     rippleColor: String,
     onPress(event): void,
     onLongPress(event): void,
-    borderLess: Boolean,
+    /**
+     * true: the ripple will render outside of the view bounds
+     * false: the ripple will render inside of the view bounds
+     */
+    borderLess: Boolean,  
     rippleSize: Number,
+    /**
+     * Duration of animation
+     *  @default '350'
+     */
     rippleDuration: Number,
+
+    /**
+     * Zoom in of ripple size
+     * @default '15'
+     */
     rippleSizeScale: Number,
     containerStyle: StyleProp<ViewStyle>,
+
+    /**
+     * true: Start ripple from center container
+     * false: Start ripple from click location 
+     * @default 'false'
+     */
     isRippleCenter: Boolean,
+    /**
+     * true: Contain sub-views have on-press,... event, 
+     * false: Not contain sub-views have on-press,.... event,
+     * @default 'false'
+     */
     haveSubPress: Boolean
 };
 
