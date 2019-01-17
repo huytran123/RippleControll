@@ -1,7 +1,7 @@
 {
   "name": "react-native-ripple-controls",
-  "version": "0.0.17",
-  "description": "ripple controls supports androind and ios react native",
+  "version": "0.0.18",
+  "description": "ripple controls package supports android and ios with ripple effect",
   "main": "index.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
