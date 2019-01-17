@@ -87,7 +87,7 @@ export default class RippleIcon extends React.PureComponent<Props> {
     render() {
         return (
             <RippleTouchable
-                rippleSizeScale={2}
+                rippleSizeScale={2.5}
                 isRippleCenter={true}
                 rippleSize={this.props.size}
                 borderLess={false}

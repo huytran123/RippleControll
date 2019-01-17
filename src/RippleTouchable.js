@@ -6,8 +6,7 @@ import {
     Easing,
     Platform,
     StyleProp,
-    ViewStyle,
-    TouchableOpacity
+    ViewStyle
 } from "react-native";
 import PropTypes from "prop-types";
 type Props = {
@@ -19,23 +18,21 @@ type Props = {
     rippleDuration: Number,
     rippleSizeScale: Number,
     containerStyle: StyleProp<ViewStyle>,
-    isRippleCenter: Boolean
+    isRippleCenter: Boolean,
+    haveSubPress: Boolean
 };
 
 export default class RippleTouchable extends React.PureComponent<Props> {
     rippleAnimated;
     startValueScale = 0.01;
-    mainX = -1;
-    mainY = -1;
     leftRipple = 0;
     topRipple = 0;
-    mainView;
     constructor(props) {
         super(props);
         this.state = {
             scaleAnimate: new Animated.Value(this.startValueScale),
             opacityAnimate: new Animated.Value(1),
-            locationClick: {x: 0, y: 0},
+            locationClick: { x: 0, y: 0 },
             isShowRipple: false
         };
     }
@@ -48,7 +45,8 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         rippleDuration: PropTypes.number,
         containerStyle: PropTypes.any,
         rippleSizeScale: PropTypes.number,
-        isRippleCenter: PropTypes.bool
+        isRippleCenter: PropTypes.bool,
+        haveSubPress: PropTypes.bool
     };
 
     static defaultProps = {
@@ -57,13 +55,14 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         onPress: event => {},
         borderLess: true,
         rippleSize: 40,
-        rippleDuration: 400,
+        rippleDuration: 500,
         rippleSizeScale: 15,
-        isRippleCenter: false
+        isRippleCenter: false,
+        haveSubPress: false
     };
 
     componentDidMount() {
-        this.setState({isShowRipple: false});
+        this.setState({ isShowRipple: false });
         this.rippleAnimated = Animated.timing(this.state.scaleAnimate, {
             duration: this.props.rippleDuration,
             toValue: 1,
@@ -93,10 +92,10 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         this.state.scaleAnimate.setValue(this.startValueScale);
 
         //get location press
-        var locationClick = {...this.state.locationClick};
-        locationClick.x = parseInt(nativeEvent.pageX - this.mainX);
-        locationClick.y = parseInt(nativeEvent.pageY - this.mainY);
-        this.setState({locationClick: locationClick, isShowRipple: true});
+        var locationClick = { ...this.state.locationClick };
+        locationClick.x = nativeEvent.locationX;
+        locationClick.y = nativeEvent.locationY;
+        this.setState({ locationClick: locationClick, isShowRipple: true });
 
         //set left and top ripple
 
@@ -107,59 +106,53 @@ export default class RippleTouchable extends React.PureComponent<Props> {
 
         //start animation
         this.rippleAnimated.start(() => {
-            this.setState({isShowRipple: false});
+            this.setState({ isShowRipple: false });
         });
     }
     render() {
-        const {isShowRipple} = this.state;
+        const { isShowRipple } = this.state;
 
         return (
-            <TouchableOpacity
-                ref={ref => {
-                    this.mainView = ref;
-                }}
-                onLayout={event => {
-                    if (this.mainX == -1 && this.mainY == -1) {
-                        this.mainView.measure((fx, fy, width, height, px, py) => {
-                            debugger;
-                            this.mainX = px;
-                            this.mainY = py;
-                        });
-                    }
-                }}
-                onPress={this.onPress}
-                activeOpacity={0.7}
-                onLongPress={this.onLongPress}
-                style={[{overflow: this.props.borderLess ? "hidden" : "visible"}, this.props.containerStyle]}
-            >
-                {this.props.children}
-                {isShowRipple && (
-                    <Animated.View
-                        pointerEvents={"none"}
-                        style={{
-                            position: "absolute",
-                            width: this.props.rippleSize,
-                            top: this.topRipple,
-                            left: this.leftRipple,
-                            height: this.props.rippleSize,
-                            borderRadius: this.props.rippleSize / 2,
-                            backgroundColor: this.props.rippleColor,
-                            transform: [
-                                {
-                                    scale: this.state.scaleAnimate.interpolate({
-                                        inputRange: [0, 1],
-                                        outputRange: [this.startValueScale, this.props.rippleSizeScale]
-                                    })
-                                }
-                            ],
-                            opacity: this.state.scaleAnimate.interpolate({
-                                inputRange: [0, 1],
-                                outputRange: [0.4, 0]
-                            })
-                        }}
-                    />
-                )}
-            </TouchableOpacity>
+            <TouchableWithoutFeedback onPress={this.onPress} onLongPress={this.onLongPress}>
+                <View
+                    pointerEvents={this.props.haveSubPress ? "auto" : "box-only"}
+                    style={[
+                        { overflow: this.props.borderLess ? "hidden" : "visible" },
+                        this.props.containerStyle
+                    ]}
+                >
+                    {this.props.children}
+                    {isShowRipple && (
+                        <Animated.View
+                            pointerEvents={"none"}
+                            style={{
+                                position: "absolute",
+                                width: this.props.rippleSize,
+                                top: this.topRipple,
+                                left: this.leftRipple,
+                                height: this.props.rippleSize,
+                                borderRadius: this.props.rippleSize / 2,
+                                backgroundColor: this.props.rippleColor,
+                                transform: [
+                                    {
+                                        scale: this.state.scaleAnimate.interpolate({
+                                            inputRange: [0, 1],
+                                            outputRange: [
+                                                this.startValueScale,
+                                                this.props.rippleSizeScale
+                                            ]
+                                        })
+                                    }
+                                ],
+                                opacity: this.state.scaleAnimate.interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [0.45, 0]
+                                })
+                            }}
+                        />
+                    )}
+                </View>
+            </TouchableWithoutFeedback>
         );
     }
 }

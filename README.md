@@ -34,29 +34,29 @@ Usage
     import {RippleTouchable, RippleButton, RippleIcon} from 'react-native-ripple-controls;
     
     export default class App extends Component {
-        render() {
-            return (
-                <View style={styles.container}>
-                    <RippleTouchable
-                        containerStyle={{
-                            width: "90%",
-                            borderRadius: 10,
-                            height: 100,
-                            backgroundColor: "#ff1a1a"
-                        }}
-                    />
-    
-                    <RippleTouchable
-                        rippleColor={"#1a6600"}
-                        containerStyle={{
-                            width: "90%",
-                            marginTop: 20,
-                            borderRadius: 10,
-                            height: 100,
-                            backgroundColor: "#e6f2ff"
-                        }}
-                    />
-    
+    render() {
+        return (
+            <View style={styles.container}>
+                <RippleTouchable
+                    containerStyle={{
+                        width: "90%",
+                        borderRadius: 10,
+                        height: 100,
+                        backgroundColor: "#ff1a1a"
+                    }}
+                />
+
+                <RippleTouchable
+                    rippleColor={"#1a6600"}
+                    haveSubPress={true}
+                    containerStyle={{
+                        width: "90%",
+                        marginTop: 20,
+                        borderRadius: 10,
+                        height: 100,
+                        backgroundColor: "#e6f2ff"
+                    }}
+                >
                     <RippleIcon
                         containerStyle={{ marginTop: 20 }}
                         name={"birthday-cake"}
@@ -64,29 +64,38 @@ Usage
                         type={"font-awesome-5"}
                         color={"#ff9900"}
                     />
-    
-                    <RippleButton
-                        text={"BUTTON 1"}
-                        textStyle={{color:"#fff", fontSize:30}}
-                        buttonContainerStyle={{
-                            width: "90%",
-                            marginTop: 20,
-                            borderRadius: 10,
-                            height: 100,
-                            backgroundColor: "#009900"
-                        }}
-                    />
-                </View>
-            );
-        }
+                </RippleTouchable>
+
+                <RippleIcon
+                    containerStyle={{ marginTop: 20 }}
+                    name={"birthday-cake"}
+                    size={50}
+                    type={"font-awesome-5"}
+                    color={"#ff9900"}
+                />
+
+                <RippleButton
+                    text={"BUTTON 1"}
+                    textStyle={{ color: "#fff", fontSize: 30 }}
+                    buttonContainerStyle={{
+                        width: "90%",
+                        marginTop: 20,
+                        borderRadius: 10,
+                        height: 100,
+                        backgroundColor: "#009900"
+                    }}
+                />
+            </View>
+        );
     }
-    
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#F5FCFF"
-        }   
-    });
-    
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F5FCFF"
+    }
+});
+
