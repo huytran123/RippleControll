@@ -1,6 +1,6 @@
 **REACT-NATIVE-RIPPLE-CONTROLS**
 ------------
-Base component for TouchableOpacity element with activeOpacity=0.9.
+Base component for TouchableWithoutFeedback element.
 
 ![alt text](https://raw.githubusercontent.com/huytran123/RippleControls/master/Screen%20Recording%202019-01-15%20at%2010.54.57%20PM.gif)
 
