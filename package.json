@@ -1,6 +1,6 @@
 {
   "name": "react-native-ripple-controls",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "ripple controls package supports android and ios with ripple effect",
   "main": "index.js",
   "scripts": {

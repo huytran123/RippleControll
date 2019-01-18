@@ -103,7 +103,7 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         this.startRipple(event.nativeEvent);
         setTimeout(() => {
             if (this.props.onPress != null) this.props.onPress(event);
-        }, this.props.rippleDuration);
+        }, this.props.rippleDuration - (Platform.OS == "android" ? this.props.rippleDuration/3 : 0 ));
     };
 
     onLongPress = event => {
@@ -111,7 +111,7 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         this.startRipple(event.nativeEvent);
         setTimeout(() => {
             if (this.props.onLongPress != null) this.props.onLongPress(event);
-        }, this.props.rippleDuration);
+        }, this.props.rippleDuration - (Platform.OS == "android" ? this.props.rippleDuration/3 : 0 ));
     };
 
     startRipple(nativeEvent) {
