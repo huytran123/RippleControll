@@ -21,7 +21,7 @@ type Props = {
      * true: the ripple will render outside of the view bounds
      * false: the ripple will render inside of the view bounds
      */
-    borderLess: Boolean,  
+    borderLess: Boolean,
     rippleSize: Number,
     /**
      * Duration of animation
@@ -38,12 +38,12 @@ type Props = {
 
     /**
      * true: Start ripple from center container
-     * false: Start ripple from click location 
+     * false: Start ripple from click location
      * @default 'false'
      */
     isRippleCenter: Boolean,
     /**
-     * true: Contain sub-views have on-press,... event, 
+     * true: Contain sub-views have on-press,... event,
      * false: Not contain sub-views have on-press,.... event,
      * @default 'false'
      */
@@ -101,17 +101,27 @@ export default class RippleTouchable extends React.PureComponent<Props> {
     onPress = event => {
         if (this.props.onPress == null) return;
         this.startRipple(event.nativeEvent);
-        setTimeout(() => {
-            if (this.props.onPress != null) this.props.onPress(event);
-        }, this.props.rippleDuration - (Platform.OS == "android" ? this.props.rippleDuration/3 : 0 ));
+        setTimeout(
+            () => {
+                if (this.props.onPress != null) this.props.onPress(event);
+            },
+            Platform.OS == "android"
+                ? this.props.rippleDuration / 4
+                : this.props.rippleDuration * 0.5
+        );
     };
 
     onLongPress = event => {
         if (this.props.onLongPress == null) return;
         this.startRipple(event.nativeEvent);
-        setTimeout(() => {
-            if (this.props.onLongPress != null) this.props.onLongPress(event);
-        }, this.props.rippleDuration - (Platform.OS == "android" ? this.props.rippleDuration/3 : 0 ));
+        setTimeout(
+            () => {
+                if (this.props.onLongPress != null) this.props.onLongPress(event);
+            },
+            Platform.OS == "android"
+                ? this.props.rippleDuration / 4
+                : this.props.rippleDuration * 0.5
+        );
     };
 
     startRipple(nativeEvent) {
