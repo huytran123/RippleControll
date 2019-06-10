@@ -11,8 +11,8 @@
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
-    "babel-jest": "23.6.0",
-    "jest": "23.6.0",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
     "metro-react-native-babel-preset": "0.48.5",
     "react-test-renderer": "16.6.3"
   },
@@ -28,7 +28,7 @@
     "controls",
     "react",
     "native",
-	"button"
+    "button"
   ],
   "author": "HuyTran <huy.hoang2225@gmail.com>",
   "license": "ISC",
