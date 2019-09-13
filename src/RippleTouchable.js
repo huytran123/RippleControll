@@ -1,5 +1,13 @@
 import React from "react";
-import {TouchableWithoutFeedback, View, Animated, Easing, Platform, StyleProp, ViewStyle} from "react-native";
+import {
+    TouchableWithoutFeedback,
+    View,
+    Animated,
+    Easing,
+    Platform,
+    StyleProp,
+    ViewStyle
+} from "react-native";
 import PropTypes from "prop-types";
 type Props = {
     /**
@@ -52,7 +60,7 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         this.state = {
             scaleAnimate: new Animated.Value(this.startValueScale),
             opacityAnimate: new Animated.Value(1),
-            locationClick: {x: 0, y: 0},
+            locationClick: { x: 0, y: 0 },
             isShowRipple: false
         };
     }
@@ -75,14 +83,14 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         onPress: event => {},
         borderLess: true,
         rippleSize: 40,
-        rippleDuration: 500,
+        rippleDuration: 400,
         rippleSizeScale: Platform.OS == "android" ? 15 : 20,
         isRippleCenter: false,
         haveSubPress: false
     };
 
     componentDidMount() {
-        this.setState({isShowRipple: false});
+        this.setState({ isShowRipple: false });
         this.rippleAnimated = Animated.timing(this.state.scaleAnimate, {
             duration: this.props.rippleDuration,
             toValue: 1,
@@ -93,18 +101,18 @@ export default class RippleTouchable extends React.PureComponent<Props> {
     onPress = event => {
         if (this.props.onPress == null) return;
         this.startRipple(event.nativeEvent);
-        var timeout = Platform.OS == "android" ? this.props.rippleDuration / 2 : this.props.rippleDuration;
+        var timeout = this.props.rippleDuration;
         setTimeout(() => {
-            if (this.props.onLongPress != null) this.props.onLongPress(event);
+            if (this.props.onPress  != null) this.props.onPress (event);
         }, timeout);
     };
 
     onLongPress = event => {
         if (this.props.onLongPress == null) return;
         this.startRipple(event.nativeEvent);
-        var timeout = Platform.OS == "android" ? this.props.rippleDuration / 2 : this.props.rippleDuration;
+        var timeout = this.props.rippleDuration;
         setTimeout(() => {
-            if (this.props.onLongPress != null) this.props.onLongPress(event);
+            if (this.props.onLongPress!= null) this.props.onLongPress(event);
         }, timeout);
     };
 
@@ -114,10 +122,10 @@ export default class RippleTouchable extends React.PureComponent<Props> {
         this.state.scaleAnimate.setValue(this.startValueScale);
 
         //get location press
-        var locationClick = {...this.state.locationClick};
+        var locationClick = { ...this.state.locationClick };
         locationClick.x = nativeEvent.locationX;
         locationClick.y = nativeEvent.locationY;
-        this.setState({locationClick: locationClick, isShowRipple: true});
+        this.setState({ locationClick: locationClick, isShowRipple: true });
 
         //set left and top ripple
 
@@ -128,17 +136,20 @@ export default class RippleTouchable extends React.PureComponent<Props> {
 
         //start animation
         this.rippleAnimated.start(() => {
-            this.setState({isShowRipple: false});
+            this.setState({ isShowRipple: false });
         });
     }
     render() {
-        const {isShowRipple} = this.state;
+        const { isShowRipple } = this.state;
 
         return (
             <TouchableWithoutFeedback onPress={this.onPress} onLongPress={this.onLongPress}>
                 <View
                     pointerEvents={this.props.haveSubPress ? "auto" : "box-only"}
-                    style={[{overflow: this.props.borderLess ? "hidden" : "visible"}, this.props.containerStyle]}
+                    style={[
+                        { overflow: this.props.borderLess ? "hidden" : "visible" },
+                        this.props.containerStyle
+                    ]}
                 >
                     {this.props.children}
                     {isShowRipple && (
@@ -156,7 +167,10 @@ export default class RippleTouchable extends React.PureComponent<Props> {
                                     {
                                         scale: this.state.scaleAnimate.interpolate({
                                             inputRange: [0, 1],
-                                            outputRange: [this.startValueScale, this.props.rippleSizeScale]
+                                            outputRange: [
+                                                this.startValueScale,
+                                                this.props.rippleSizeScale
+                                            ]
                                         })
                                     }
                                 ],

@@ -28,6 +28,7 @@ type Props = {
      * @default 'black'
      */
     color: String,
+    padding: Number,
     containerStyle: StyleProp<ViewStyle>,
     onPress(event): void,
     onLongPress(event): void
@@ -58,12 +59,14 @@ export default class RippleIcon extends React.PureComponent<Props> {
         containerStyle: PropTypes.any,
         onPress: PropTypes.func,
         onLongPress: PropTypes.func,
-        colorRipple: PropTypes.string
+        colorRipple: PropTypes.string,
+        padding: PropTypes.number
     };
     static defaultProps = {
+        padding: 0,
         size: 26,
         color: "#000",
-        type:"material-community"
+        type: "material-community"
     };
     renderIcon() {
         const { type } = this.props;
@@ -107,11 +110,16 @@ export default class RippleIcon extends React.PureComponent<Props> {
             <RippleTouchable
                 rippleSizeScale={2.5}
                 isRippleCenter={true}
-                rippleSize={this.props.size}
+                rippleSize={this.props.size + this.props.padding}
                 borderLess={false}
                 rippleColor={this.props.color}
                 containerStyle={[
-                    { width: this.props.size, height: this.props.size },
+                    {
+                        width: this.props.size + this.props.padding,
+                        height: this.props.size + this.props.padding,
+                        justifyContent: "center",
+                        alignItems: "center"
+                    },
                     this.props.containerStyle
                 ]}
                 onPress={this.props.onPress}
